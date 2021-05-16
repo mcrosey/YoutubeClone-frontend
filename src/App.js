@@ -1,11 +1,16 @@
-import './App.css';
-import React from 'react';
+//import './App.css';
+import React, { Component } from 'react';
 import Homepage from './containers/Homepage';
+import './index.css'
 
-function App() {
+export default class App extends Component {
+
+  render() {
   return (
-    <Homepage>Hello</Homepage>
+    <Homepage></Homepage>
   );
 }
 
-export default App;
+}
+
+

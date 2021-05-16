@@ -1,11 +1,11 @@
 
 
-/* header */
 
 
 
 
-.sidebar{
+
+/*.sidebar{
     width: 240px;
     background: white;
     color: black;
@@ -124,7 +124,7 @@
 }
 
 
-/* Videos Section */
+
 .videos{
     grid-area: videos;
     display: grid;
@@ -181,3 +181,4 @@
         grid-column: 1 / -1;
     }
 }
+/*
