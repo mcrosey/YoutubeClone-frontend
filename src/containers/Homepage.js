@@ -25,6 +25,7 @@ export default class Homepage extends Component {
             },
         });
         this.setState({ videos:res.data.items, selectedVideo: res.data.items[0] });
+        console.log(res);
     };
 
 
