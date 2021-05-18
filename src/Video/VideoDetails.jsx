@@ -1,14 +1,21 @@
 import React from 'react'
-import Comments from '../Comments/comments'
 
 
 
-const VideoDetails = ({ video }) => {
+
+ 
+function VideoDetails({ video })  {
+
+
   if (!video) {
     return <div>Loading...</div>
   }
 
+
   const videoSrc = `https://www.youtube.com/embed/${video.id.videoId}`
+ 
+ 
+
   return (
     <>
      <div className='ui container'>
@@ -24,12 +31,12 @@ const VideoDetails = ({ video }) => {
       <div className="relatedVideos">
         <h3>{video.snippet.title}</h3>
         <p>{video.snippet.description}</p>
+     
         <br />
       </div>
       <div>
       </div>
       </div>
-      <Comments />
       </div>
     </>
   )

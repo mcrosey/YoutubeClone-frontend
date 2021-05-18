@@ -3,12 +3,17 @@ import Header from '../Header/Header';
 import youtube from '../api/youtubeapi';
 import VideoList from '../Video/VideoList';
 import VideoDetails from '../Video/VideoDetails';
+import Comments from '../Comments/comments'
 
 export default class Homepage extends Component {
+    constructor(props) {
+        super(props); 
 
-    state={
+        this.state={
         videos: [],
-        selectedVideo: ''
+        selectedVideo: '',
+        comment: []
+    }
     }
 
     componentDidMount() {
@@ -16,6 +21,8 @@ export default class Homepage extends Component {
     }
     onSelectedVideo = (video) => {
         this.setState({ selectedVideo: video })
+        console.log(video.id)
+       
     }
     
     onTermSubmit = async (term) => {
@@ -25,13 +32,20 @@ export default class Homepage extends Component {
             },
         });
         this.setState({ videos:res.data.items, selectedVideo: res.data.items[0] });
-        console.log(res);
+       // console.log(res);
     };
 
 
     onClickSearch = () => {
     console.log('yes');
 }
+
+//   updateComment = (newComment) => {
+     
+//       this.setState {
+//           Comment.concat(newComment))
+       
+//   }
 
 render() {
     return (
@@ -42,7 +56,7 @@ render() {
        <div className='ui container'>
         
         <VideoDetails video={this.state.selectedVideo} />
-        
+         <Comments videoId={this.state.selectedVideo.id}/>
         <div className='containers'>
          <div className='col-md-4'>
         <VideoList videos={this.state.videos} onSelectedVideo={this.onSelectedVideo}/>
@@ -54,3 +68,5 @@ render() {
     )
 }
 }
+
+ // <Comments CommentList={CommentList}  refreshFunction={updateComment}/>

@@ -1,25 +1,51 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { Button, Input } from 'antd';
 
 const { TextArea } = Input;
 
-function Comments() {
+function Comments(props) {
+
+    const [Comment, setComment] = useState("");
+
+    const handleChange = (e) => {
+        setComment(e.currentTarget.value)
+    }
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        const dataComment = {
+        text: Comment,
+        videoId: props.videoId
+        
+    }
+        axios.post(`http://localhost:5000/api/${props.videoId}`, dataComment)
+        .then(response => {
+            if(response) {
+                setComment("")
+                console.log(response)
+            } else {
+                console.log('Failed to save comment')
+               
+            }
+        })
+    }
+
     return (
         <>
         <div>
             <br />
             <p>replies</p>
             <br />
-            <form style={{ display: 'flex' }} onSubmit>
+            <form style={{ display: 'flex' }} onSubmit={onSubmit}>
             <TextArea 
                 style={{ width: '55%', borderRadius: '5px' }}
-                onChange
-                value
+                onChange={handleChange}
+                value={Comment}
                 placeholder='write some comments'
                 />
                 <br />
-                <Button style={{ width: '5%', height: '52px' }}>Submit</Button>
+                <Button style={{ width: '10%', height: '52px' }} onClick={onSubmit}>Submit</Button>
             </form>
             </div>
         </>
