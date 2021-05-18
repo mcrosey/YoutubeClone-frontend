@@ -39,10 +39,14 @@ render() {
         <div class="wrapper">
         <Header onClickSearch={this.onTermSubmit} />
         </div>
-        <div className='ui container'>
-        <div className='col-md-4'>
-         <VideoDetails video={this.state.selectedVideo} />
+       <div className='ui container'>
+        
+        <VideoDetails video={this.state.selectedVideo} />
+        
+        <div className='containers'>
+         <div className='col-md-4'>
         <VideoList videos={this.state.videos} onSelectedVideo={this.onSelectedVideo}/>
+        </div>
         </div>
         </div>
         
