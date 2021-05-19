@@ -17,11 +17,12 @@ export default class Homepage extends Component {
     }
 
     componentDidMount() {
-        this.onTermSubmit('goodful');
+        this.onTermSubmit('vegan tacos');
     }
+
     onSelectedVideo = (video) => {
         this.setState({ selectedVideo: video })
-        console.log(video.id)
+     //  console.log(this.state.selectedVideo.id)
        
     }
     
@@ -36,9 +37,7 @@ export default class Homepage extends Component {
     };
 
 
-    onClickSearch = () => {
-    console.log('yes');
-}
+
 
 //   updateComment = (newComment) => {
      
@@ -48,6 +47,7 @@ export default class Homepage extends Component {
 //   }
 
 render() {
+  
     return (
     <>
         <div class="wrapper">

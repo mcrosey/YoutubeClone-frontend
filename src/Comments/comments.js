@@ -14,12 +14,12 @@ function Comments(props) {
 
     const onSubmit = (e) => {
         e.preventDefault();
+        console.log("props",props.videoId)
         const dataComment = {
         text: Comment,
-        videoId: props.videoId
-        
-    }
-        axios.post(`http://localhost:5000/api/${props.videoId}`, dataComment)
+        videoId: props.videoId.videoId 
+    } 
+        axios.post(`http://localhost:5000/api/${props.videoId.videoId}`, dataComment)
         .then(response => {
             if(response) {
                 setComment("")
