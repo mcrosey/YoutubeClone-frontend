@@ -4,6 +4,8 @@ import youtube from '../api/youtubeapi';
 import VideoList from '../Video/VideoList';
 import VideoDetails from '../Video/VideoDetails';
 import Comments from '../Comments/comments'
+import GetComments from '../Comments/getComments'
+
 
 export default class Homepage extends Component {
     constructor(props) {
@@ -12,13 +14,15 @@ export default class Homepage extends Component {
         this.state={
         videos: [],
         selectedVideo: '',
-        comment: []
+        dataReady : false
+   
     }
     }
 
     componentDidMount() {
         this.onTermSubmit('vegan tacos');
     }
+
 
     onSelectedVideo = (video) => {
         this.setState({ selectedVideo: video })
@@ -32,23 +36,14 @@ export default class Homepage extends Component {
                 q:term,
             },
         });
-        this.setState({ videos:res.data.items, selectedVideo: res.data.items[0] });
+        this.setState({ videos:res.data.items, selectedVideo: res.data.items[0], dataReady:true });
        // console.log(res);
     };
 
-
-
-
-//   updateComment = (newComment) => {
-     
-//       this.setState {
-//           Comment.concat(newComment))
-       
-//   }
-
 render() {
-  
-    return (
+    console.log("Rednering happening")
+    if(this.state.dataReady){
+         return (
     <>
         <div class="wrapper">
         <Header onClickSearch={this.onTermSubmit} />
@@ -56,7 +51,8 @@ render() {
        <div className='ui container'>
         
         <VideoDetails video={this.state.selectedVideo} />
-         <Comments videoId={this.state.selectedVideo.id}/>
+        <GetComments videoId={this.state.selectedVideo.id} />
+        <Comments videoId={this.state.selectedVideo.id} />
         <div className='containers'>
          <div className='col-md-4'>
         <VideoList videos={this.state.videos} onSelectedVideo={this.onSelectedVideo}/>
@@ -66,7 +62,10 @@ render() {
         
     </>
     )
+    }
+    else{
+        return(<div></div>)
+    }
+   
 }
 }
-
- // <Comments CommentList={CommentList}  refreshFunction={updateComment}/>

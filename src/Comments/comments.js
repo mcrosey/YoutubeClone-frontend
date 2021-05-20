@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Button, Input } from 'antd';
 
@@ -7,6 +7,8 @@ const { TextArea } = Input;
 function Comments(props) {
 
     const [Comment, setComment] = useState("");
+    const [CommentList, setCommentList] = useState("");
+    
 
     const handleChange = (e) => {
         setComment(e.currentTarget.value)
@@ -15,6 +17,7 @@ function Comments(props) {
     const onSubmit = (e) => {
         e.preventDefault();
         console.log("props",props.videoId)
+        console.log('propsAgain', props.videoId.videoId)
         const dataComment = {
         text: Comment,
         videoId: props.videoId.videoId 
@@ -23,6 +26,7 @@ function Comments(props) {
         .then(response => {
             if(response) {
                 setComment("")
+              //  props.refreshFunction(response)
                 console.log(response)
             } else {
                 console.log('Failed to save comment')
@@ -31,12 +35,14 @@ function Comments(props) {
         })
     }
 
+
     return (
         <>
         <div>
             <br />
-            <p>replies</p>
+            <p>Comments</p>
             <br />
+         
             <form style={{ display: 'flex' }} onSubmit={onSubmit}>
             <TextArea 
                 style={{ width: '55%', borderRadius: '5px' }}
