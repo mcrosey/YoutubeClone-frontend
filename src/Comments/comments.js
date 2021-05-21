@@ -7,7 +7,7 @@ const { TextArea } = Input;
 function Comments(props) {
 
     const [Comment, setComment] = useState("");
-    const [CommentList, setCommentList] = useState("");
+
     
 
     const handleChange = (e) => {
@@ -41,8 +41,7 @@ function Comments(props) {
         <div>
             <br />
             <p>Comments</p>
-            <br />
-         
+            <br /> 
             <form style={{ display: 'flex' }} onSubmit={onSubmit}>
             <TextArea 
                 style={{ width: '55%', borderRadius: '5px' }}
@@ -64,63 +63,4 @@ export default Comments;
 
 
 
-// import VideoDetails from '../Video/VideoDetails'
 
-// class Comments extends React.Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             text: '',
-//             likes: '',
-//             dislikes: '',
-//             replies: '',
-//             videoId: '',
-//             date: ''
-//         }
-
-//         this.handleChange = this.handleChange.bind(this);
-//         this.handleSubmit = this.handleSubmit.bind(this);
-//     }
-
-//     handleChange(e) {
-//         this.setState({value: e.target.value });
-//     }
-
-
-//     handleSubmit(e) {
-//         e.preventDefault();
-//         let url = `http://localhost:5000/api/${this.props.video.id.videoId}`;
-//         axios.post(url,{
-//             text: this.state.text,
-//           //  likes: this.state.likes,
-//           //  dislikes: this.state.dislikes,
-//          //   replies: this.state.replies,
-//             videoId: this.state.videoId,
-//           //  date: this.state.date
-//         })
-//         .then(response => {
-//             this.forceUpdate();
-         
-//         })
-//         .catch(error => {
-//             console.log(error)
-//         })
-//     }
-    
-    
-
-//     render() {
-//         return (
-//             <div >
-//                 <form onSubmit={this.handleSubmit}>
-//                 <label>
-//                 Comments:
-//                 <input type='text' value={this.state.value} onChange={this.handleChange} />
-//                 </label>
-//                 <input type='submit' value='Submit' />
-//             </form>
-//             </div>
-      
-//         );
-//     }
-// }

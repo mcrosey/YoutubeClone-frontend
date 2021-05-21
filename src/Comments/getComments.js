@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import SingleComment from './singleComment'
 
 function GetComments (props){
   const [CommentLists, setCommentLists] = useState([]);
@@ -12,12 +13,7 @@ function GetComments (props){
             setCommentLists(result.data.map((item, index) => {
                 return item.text
             }))
-            // CommentLists.map((text, index) => {
-            //     console.log(text);
-            // })
-          // console.log(result.data)
-          //console.log(props.videoId.videoId)
-           // console.log(result.data.text)
+  
 
   }, [CommentLists])
 
@@ -27,17 +23,13 @@ function GetComments (props){
         <div>  
             <div className='container'>
             {CommentLists.map(function(el){
-                return <div>{el}</div>
+              return <div>{el}</div>
             })}
 
             </div>
             </div>
         </>
     )
-
-
-
-
 
 }
 
@@ -48,14 +40,24 @@ export default GetComments;
 
 
 
+//     return (
+//         <>
+//         <div>  
+//             <div className='container'>
+//             {CommentLists.map(function(el){
+//                 return <div>{el}</div>
+//             })}
 
-//  useEffect(async () => {
-//     try{ 
-//       let result = await axios.get(`http://localhost:5000/api/${props.videoId.videoId}`)
-//       let CommentLists = result.data.text.map((e) => e); // map your state here
-//       setCommentLists(CommentLists); // and then update the state
-//       console.log(CommentLists);
-//     } catch(error) {
-//        console.error(error.message);
-//     }
-//   },[]);
+//             </div>
+//             </div>
+//         </>
+//     )
+
+// }
+
+          // CommentLists.map((text, index) => {
+            //     console.log(text);
+            // })
+          // console.log(result.data)
+          //console.log(props.videoId.videoId)
+           // console.log(result.data.text)
